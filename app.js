@@ -22,6 +22,8 @@ mongoose.connect(mongoURL,{useNewUrlParser:true})
     console.log("MongoDB Connected!!");
 });
 
+//storing session onto the database
+
 const store = new MongoDBSession({ //storing session into mongodb 
     uri:mongoURL,
     collection:"mysessions"
@@ -61,7 +63,7 @@ app.get("/dashboard",isAuth,(req,res)=> {
 });
 
 
-
+//login & register
 app.post("/login",async(req,res)=> {
 
     const {email,password} = req.body;
@@ -111,7 +113,7 @@ app.post("/register", async (req,res)=> {
 
 app.post("/logout",(req,res)=> {
     req.session.destroy((err)=> {
-        if (err) throw err;
+        if (err) throw err;         //throw keyword in one line
         res.redirect("/");
     })
 })
