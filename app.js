@@ -22,6 +22,8 @@ mongoose.connect(mongoURL,{useNewUrlParser:true})
     console.log("MongoDB Connected!!");
 });
 
+//storing session onto the database
+
 const store = new MongoDBSession({ //storing session into mongodb 
     uri:mongoURL,
     collection:"mysessions"
@@ -61,7 +63,7 @@ app.get("/dashboard",isAuth,(req,res)=> {
 });
 
 
-
+//login & register
 app.post("/login",async(req,res)=> {
 
     const {email,password} = req.body;
