@@ -80,7 +80,7 @@ app.post("/login",async(req,res)=> {
         return res.redirect("/login");
     }
 
-    req.session.isAuth = true;
+    req.session.isAuth = true; //passing value inside of session for reduction in time of authentication
 
     res.redirect("/dashboard")
 
